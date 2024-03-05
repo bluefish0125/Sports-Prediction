@@ -16,33 +16,18 @@ Record:
 
 Performance Statistics
 
-## Record
-
 <details>
-<summary>Current record</summary>
-
-[]
-
+<summary> Record </summary>
+- Current record []
+- last 10 (or arbitrary numbers) games record []
+- Rank []
 </details>
 
 <details>
-<summary>Last 10 games record</summary>
-
-[]
-
+<summary> Performance Statistics </summary>
+- Avg. points scored []
+- Avg. points against []
 </details>
-
-<details>
-<summary>Rank</summary>
-
-[]
-
-</details>
-
-## Performance Statistics
-
-<details>
-<summary>Click here to view statistics</summary>
 
 - [Replace with actual statistics]
 

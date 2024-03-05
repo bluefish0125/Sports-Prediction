@@ -9,15 +9,10 @@ The purpose of the project is to create several ML models for NBA games predicti
 
 Using NBA's API (https://github.com/swar/nba_api), Rapid API (https://rapidapi.com/api-sports/api/api-nba), Pro-basketball reference (https://www.basketball-reference.com/teams/), we will collect data for games, teams' performance, players' statistics on each team, and advanced data. Below are the several aspects of data being collected (or intend to collect, constantly updating):
 
-Record:
-- Current record []
-- last 10 (or arbitrary numbers) games record []
-- Rank []
-
-Performance Statistics
 
 <details>
 <summary> Record </summary>
+  
 - Current record []
   
 - last 10 (or arbitrary numbers) games record []
@@ -27,9 +22,14 @@ Performance Statistics
 
 <details>
 <summary> Performance Statistics </summary>
-- Avg. points scored []
+  
+- Avg. points scored [x]
   
 - Avg. points against []
+
+- Points scored per 100 possessions []
+
+- Percentages for field goal, three points, two points, paint, and etc.
 </details>
 
 

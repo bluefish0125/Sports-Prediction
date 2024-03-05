@@ -19,17 +19,19 @@ Performance Statistics
 <details>
 <summary> Record </summary>
 - Current record []
+  
 - last 10 (or arbitrary numbers) games record []
+  
 - Rank []
 </details>
 
 <details>
 <summary> Performance Statistics </summary>
 - Avg. points scored []
+  
 - Avg. points against []
 </details>
 
-- [Replace with actual statistics]
 
 </details>
 

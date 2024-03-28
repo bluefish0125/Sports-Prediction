@@ -41,17 +41,17 @@ pipeline = Pipeline([
 param_distributions = {
     'feature_selector__n_features_to_select': randint(20, 1000),  # Random integer between 1 and number of features
     'classifier__alpha': uniform(0.1, 100), 
-    'classifier__solver': ['auto', 'svd', 'cholesky', 'lsqr', 'sparse_cg', 'sag', 'saga']  # Different solvers
+    'classifier__solver': ['auto', 'svd', 'cholesky', 'lsqr', 'sag', 'saga']  # Different solvers
 }
 
 # Initialize TimeSeriesSplit for cross-validation
-tscv = TimeSeriesSplit(n_splits=2)
+tscv = TimeSeriesSplit(n_splits=3)
 
 # Initialize RandomizedSearchCV
 random_search = RandomizedSearchCV(
     estimator=pipeline,
     param_distributions=param_distributions,
-    n_iter=2,  # Number of parameter settings sampled
+    n_iter=100,  # Number of parameter settings sampled
     cv=tscv,  # Cross-validation strategy
     verbose=1,
     n_jobs=-1

@@ -1,0 +1,17 @@
+Things still needed to try:
+- try scaling ranking data and unscaling ranking data
+- try spliting the data into only home games
+
+- try scaling the odds data
+* this did not work. The odds data actually confused my estimations. Will exclude in future testings.
+
+- try rolling no exponential with ranking data 
+- try no exponential with ranking data and odds data all scaled
+
+
+
+Frank's End:
+- Finishing training decision trees model
+- Deep learning
+- Hyperparameters tuning
+- Error analysis and check for underdog

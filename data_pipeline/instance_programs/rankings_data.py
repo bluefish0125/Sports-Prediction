@@ -45,7 +45,7 @@ def extracting_today_data(from_date=None, season='2023-24', season_type='Regular
         path_today = f"/Users/liqingyang/Documents/GitHub/sports_trading/sports_betting/nba_api/data/teams_stats/{season}/base_{season}.csv"
         from_date = pd.read_csv(path_today, parse_dates=['Date'])['Date'].max().date()
 
-    season_end = datetime.date.today()
+    season_end = datetime.date.today() - datetime.timedelta(days=1)
     
     current_date = from_date
     all_data = []
@@ -63,7 +63,7 @@ def extracting_today_data(from_date=None, season='2023-24', season_type='Regular
                 date_to_nullable=date_str
             ).get_data_frames()[0]
             daily_stats['Date'] = date_str
-            all_data.append(daily_stats)
+            all_data += [daily_stats]
             print(f"Data fetched for {date_str}")
         except Exception as e:
             unsuccessful_dates += [date_str]
@@ -137,18 +137,21 @@ headers = {
 response = requests.get(raw_url, headers=headers)
 if response.status_code == 200: # 200 means successful
     processed_data = pd.read_csv(StringIO(response.text), index_col=0)
-    processed_data['Date'] = pd.to_datetime(processed_data['Date'], format='mixed')    
+    processed_data['Date'] = pd.to_datetime(processed_data['Date'], format='mixed')
     max_day = processed_data['Date'].max().date()
     next_day = max_day + datetime.timedelta(days=1)
+    print("CSV retrieved from Github")
     
 else:
     print(f"Failed to retrieve the CSV file. Status Code: {response.status_code}")
 
 today = pd.DataFrame()
-if (max_day == datetime.date.today()):
+if (next_day == datetime.date.today()):
     print("Updated already")
     sys.exit(1)
 else:
+    print("Getting Stats")
+    print(next_day)
     today = getting_stats(retrieving_from=next_day).iloc[:, 1:]
     today = process(today)
 nba = pd.concat([processed_data, today], axis=0, ignore_index=True)
@@ -171,14 +174,14 @@ sha = data['sha']
 
 # Create the payload with the new content and the SHA
 payload = {
-    'message': 'Update CSV file',
+    'message': 'Daily Rankings Update',
     'content': content_encoded,
     'sha': sha,
     'branch': 'main',  # specify the branch if not 'main'
 }
 
 # Make a PUT request to update the file
-response = requests.put(url, headers=headers, json=payload)
+response = requests.put(new_url, headers=headers, json=payload)
 
 if response.status_code == 200:
     print('File updated successfully.')
